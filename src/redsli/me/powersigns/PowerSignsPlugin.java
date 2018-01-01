@@ -27,13 +27,10 @@ import redsli.me.powersigns.util.Metrics;
 
 /**
  * Created by redslime on 15.10.2017
- * 
- * TODO
- * Auto-update
  */
 public class PowerSignsPlugin extends JavaPlugin {
 
-    public static final int RESOURCE_ID = -1;
+    public static final int RESOURCE_ID = 51501;
 
 	private static Economy economy;
 	private static Metrics metrics;

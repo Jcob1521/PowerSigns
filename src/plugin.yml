@@ -1,6 +1,6 @@
 name: PowerSigns
 author: redslime
-version: 0.0.1
+version: 1.0
 main: redsli.me.powersigns.PowerSignsPlugin
 website:
 depend: [Vault]
@@ -8,3 +8,9 @@ depend: [Vault]
 commands:
   powersigns:
     aliases: [ps, powersign]
+
+permissions:
+  powersigns.sign.use:
+    default: true
+  powersigns.sign.create.self:
+    default: true
