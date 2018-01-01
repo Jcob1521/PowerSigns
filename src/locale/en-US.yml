@@ -1,0 +1,35 @@
+###########################################################################################
+# This is a YML file. Be careful when editing. Check your edits in a YAML checker like    #
+# the one at http://yaml-online-parser.appspot.com                                        #
+###########################################################################################
+
+# en-US
+# you may use '&' and '§' for color codes
+# you can access variables with '{$var_name}'
+
+locale.translator: "redslime"
+locale.name: "en-US"
+format.prefix: "&9[&b&lPower&r&3Signs&9]"
+format.success: "&a>&7"
+format.error: "&c>&7"
+format.info: "  &b*&7"
+sign.description: "Description"
+sign.price: "Price"
+sign.destroy: "{$format.success} PowerSign has been removed!"
+sign.use:
+  denied: "{$format.error} You don't have permissions to use this PowerSign!"
+  success:
+    self: "{$format.success} You activated the PowerSign for &e${price}"
+    owner: "{$format.prefix} &e{player} &7used your PowerSign &3{desc} &7for &e${price}"
+  error:
+    nomoney: "{$format.error} You don't have enough money!"
+    cooldown: "{$format.error} Please wait a few seconds before using this PowerSign again!"
+sign.create:
+  denied:
+    self: "{$format.error} You don't have permissions to create a PowerSign"
+    other: "{$format.error} You can only create a PowerSign with your name"
+  error:
+    playernotfound: "{$format.error} Couldn't find a player named &b{player}"
+    invalidnumber: "{$format.error} &b{number} &7is not a number!"
+  success: "{$format.success} Successfully created a new PowerSign"
+  help: "{$format.info} &fA valid PowerSign looks like this:"

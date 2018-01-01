@@ -1,0 +1,10 @@
+name: PowerSigns
+author: redslime
+version: 0.0.1
+main: redsli.me.powersigns.PowerSignsPlugin
+website:
+depend: [Vault]
+
+commands:
+  powersigns:
+    aliases: [ps, powersign]

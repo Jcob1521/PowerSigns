@@ -1,0 +1,9 @@
+# PowerSigns Configuration File
+
+# the plugin language. see all languages in plugins/PowerSigns/locale/
+# help me translate! you can submit translations on the github page
+lang: en-US
+
+# the cooldown every player has to wait before they can use a powersign again in seconds
+# do NOT set this to 0, it may glitch out blocks
+cooldown: 5

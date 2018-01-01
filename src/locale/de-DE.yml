@@ -1,0 +1,35 @@
+###########################################################################################
+# This is a YML file. Be careful when editing. Check your edits in a YAML checker like    #
+# the one at http://yaml-online-parser.appspot.com                                        #
+###########################################################################################
+
+# de-DE
+# you may use '&' and '§' for color codes
+# you can access variables with '{$var_name}'
+
+locale.translator: "redslime"
+locale.name: "de-DE"
+format.prefix: "&9[&b&lPower&r&3Signs&9]"
+format.success: "&a>&7"
+format.error: "&c>&7"
+format.info: "  &b*&7"
+sign.description: "Beschreibung"
+sign.price: "Preis"
+sign.destroy: "{$format.success} PowerSign wurde entfernt!"
+sign.use:
+  denied: "{$format.error} Du hast keine Berechtigung dieses PowerSign zu benutzen!"
+  success:
+    self: "{$format.success} &7Du hast das PowerSign für &e${price} &7aktiviert!"
+    owner: "{$format.prefix} &e{player} &7hat für &e${price} &7dein PowerSign &3{desc} &7benutzt!"
+  error:
+    nomoney: "{$format.error} Du hast nicht genug Geld!"
+    cooldown: "{$format.error} Bitte warte einige Sekunden, bevor du dieses PowerSign wieder benutzen kannst!"
+sign.create:
+  denied:
+    self: "{$format.error} Du hast keine Berechtigung ein PowerSign zu erstellen"
+    other: "{$format.error} Du kannst nur ein PowerSign mit deinem eigenem Namen erstellen"
+  error:
+    playernotfound: "{$format.error} &7Der Spieler &b{player} &7konnte nicht gefunden werden"
+    invalidnumber: "{$format.error} &b{number} &7ist keine Zahl!"
+  success: "{$format.success} Erfolgreich neues PowerSign erstellt!"
+  help: "{$format.info} &fEin gültiges PowerSign sieht wie folgt aus:"
