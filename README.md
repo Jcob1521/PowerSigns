@@ -4,7 +4,7 @@ Minecraft Bukkit/Spigot Plugin allowing players to activate redstone mechanisms 
 Requires [Vault](https://www.spigotmc.org/resources/vault.41918/).
 
 ## Download
-(coming soon)
+Download on the spigot resource page: https://www.spigotmc.org/resources/powersigns.51501/
 
 ## Making a new PowerSign
 This is very straight forward. Place a sign and follow the format below:<br><br>
