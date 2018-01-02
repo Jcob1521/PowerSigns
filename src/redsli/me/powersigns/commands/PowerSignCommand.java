@@ -21,6 +21,9 @@ public class PowerSignCommand implements CommandExecutor {
 		this.plugin = plugin;
 	}
 
+	/**
+	 * Gets executed on /ps /powersign /powersigns
+	 */
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if(sender instanceof Player) {

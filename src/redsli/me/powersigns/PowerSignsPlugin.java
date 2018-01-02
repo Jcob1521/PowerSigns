@@ -30,12 +30,15 @@ import redsli.me.powersigns.util.Metrics;
  */
 public class PowerSignsPlugin extends JavaPlugin {
 
-    public static final int RESOURCE_ID = 51501;
+    public static final int RESOURCE_ID = 51501; // the spigot resource id
 
-	private static Economy economy;
-	private static Metrics metrics;
-	public static PowerSignsPlugin instance;
-	
+	private static Economy economy; // the vault economy
+	private static Metrics metrics; // bStats metrics
+	public static PowerSignsPlugin instance; // instance of this class
+
+    /**
+     * Called on startup of the plugin. Initializes everything
+     */
 	public void onEnable() {
 		instance = this;
 		metrics = new Metrics(this);
@@ -43,32 +46,44 @@ public class PowerSignsPlugin extends JavaPlugin {
 		registerListeners();
 		registerCommands();
 		checkUpdate();
-		
+
+		// check if vault can find a economy system
 		if(!setupEconomy()) {
+            // economy system not found, shutting down
             Logger.getLogger("Minecraft").severe(String.format("[%s] Disabled due to no Economy system plugin found!", getDescription().getName()));
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
 	}
 
-	public void onDisable() {
-		
-	}
-
+    /**
+     * Prints an info message to the console
+     * @param message The message to be printed
+     */
 	private void logInfo(String message) {
         Logger.getLogger("Minecraft").info(String.format("[%s] " + message, getDescription().getName()));
     }
-	
+
+    /**
+     * Registers all listeners
+     */
 	private void registerListeners() {
 		PluginManager pm = Bukkit.getPluginManager();
 		pm.registerEvents(new SignChangeListener(), this);
 		pm.registerEvents(new InteractListener(), this);
 	}
-	
+
+    /**
+     * Registers all commands
+     */
 	private void registerCommands() {
 		getCommand("powersigns").setExecutor(new PowerSignCommand(this));
 	}
-	
+
+    /**
+     * Checks if there's an economy system in place
+     * @return Whether an economy system was found by vault
+     */
 	private boolean setupEconomy() {
         if (getServer().getPluginManager().getPlugin("Vault") == null) {
             return false;
@@ -80,7 +95,10 @@ public class PowerSignsPlugin extends JavaPlugin {
         economy = rsp.getProvider();
         return economy != null;
     }
-	
+
+    /**
+     * Generates config.yml and locales if not existing
+     */
 	private void setupData() {
 		// config
 		System.setProperty("file.encoding", "UTF-8");

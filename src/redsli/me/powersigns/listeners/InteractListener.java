@@ -24,7 +24,7 @@ public class InteractListener implements Listener {
 	@EventHandler
 	public void onInteract(PlayerInteractEvent e) {
 		if(e.getAction() == Action.RIGHT_CLICK_BLOCK) {
-			if(PowerSign.isPowerSign(e.getClickedBlock())) {
+			if(PowerSign.isPowerSign(e.getClickedBlock())) { // block clicked on is a PowerSign that is setup correctly and working
 				Player p = e.getPlayer();
 				if(p.hasPermission("powersigns.sign.use")) {
 					PowerSign ps = PowerSign.getPowerSign(e.getClickedBlock());
@@ -41,7 +41,12 @@ public class InteractListener implements Listener {
 			}
 		}
 	}
-	
+
+	/**
+	 * Checks if the player is on cooldown
+	 * @param player The player to check
+	 * @return Whether the player is on cooldown or not
+	 */
 	private boolean isOnCooldown(Player player) {
 		UUID uuid = player.getUniqueId();
 		if(cooldowns.containsKey(uuid)) {
@@ -50,7 +55,12 @@ public class InteractListener implements Listener {
 		}
 		return false;
 	}
-	
+
+
+    /**
+     * Sets the player on the cooldown specified in config.yml
+     * @param player The player to be cooldown'd
+     */
 	private void cooldown(Player player) {
 		UUID uuid = player.getUniqueId();
 		cooldowns.put(uuid, System.currentTimeMillis());

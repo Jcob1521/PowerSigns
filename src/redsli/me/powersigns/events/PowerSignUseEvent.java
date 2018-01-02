@@ -14,24 +14,41 @@ public class PowerSignUseEvent extends Event {
 	private static final HandlerList handlers = new HandlerList();
 	private Player player;
 	private PowerSign sign;
-	
+
+	/**
+	 * Called when a player uses a PowerSign successfully
+	 * @param player The player clicking the sign
+	 * @param sign The PowerSign clicked on
+	 */
 	public PowerSignUseEvent(Player player, PowerSign sign) {
 		this.player = player;
 		this.sign = sign;
 	}
-	
+
+    /**
+     * @return The handler list
+     */
 	public static HandlerList getHandlerList() {
 		return handlers;
 	}
-	
+
+    /**
+     * @return The player clicking the sign
+     */
 	public Player getPlayer() {
 		return player;
 	}
-	
+
+    /**
+     * @return The PowerSign clicked on
+     */
 	public PowerSign getPowerSign() {
 		return sign;
 	}
 
+    /**
+     * @return The handler list
+     */
 	@Override
 	public HandlerList getHandlers() {
 		return handlers;

@@ -25,14 +25,26 @@ public class PowerSign {
 	private String description;
 	private double price;
 	private Location loc;
-	
+
+    /**
+     * PowerSign constructor
+     * @param owner The UUID of the player name given in line 2 of the sign
+     * @param description The description, line 3
+     * @param price The price to pay in order to use the sign, line 4
+     * @param loc The location of the sign
+     */
 	public PowerSign(UUID owner, String description, double price, Location loc) {
 		this.owner = owner;
 		this.description = description;
 		this.price = price;
 		this.loc = loc;
 	}
-	
+
+    /**
+     * Checks if the given block is a PowerSign
+     * @param block The block to check
+     * @return Whether the given block is a PowerSign
+     */
 	public static boolean isPowerSign(Block block) {
 		if(block.getType() != null) {
 			if(block.getType() == Material.SIGN_POST || block.getType() == Material.WALL_SIGN) {
@@ -50,7 +62,12 @@ public class PowerSign {
 		}
 		return false;
 	}
-	
+
+    /**
+     * Gets the PowerSign for the given location
+     * @param loc The location to find the PowerSign at
+     * @return The PowerSign
+     */
 	public static PowerSign getPowerSign(Location loc) {
 		org.bukkit.block.Sign sign = (org.bukkit.block.Sign) loc.getBlock().getState();
 		if(sign.getLines() != null) {
@@ -65,18 +82,26 @@ public class PowerSign {
 		}
 		return null;
 	}
-	
+
+    /**
+     * @see #getPowerSign(Block)
+     * @param block The block to get the PowerSign from
+     */
 	public static PowerSign getPowerSign(Block block) {
 		return getPowerSign(block.getLocation());
 	}
-	
+
+    /**
+     * Handles Economy actions. Calls PowerSignUseEvent. Replaces block sign is standing on/attached to with a redstone block for a split second.
+     * @param player The player using the PowerSign
+     */
 	public void use(Player player) {
 		Bukkit.getPluginManager().callEvent(new PowerSignUseEvent(player, this));
 		PowerSignsPlugin.getEconomy().withdrawPlayer(player, price);
 		PowerSignsPlugin.getEconomy().depositPlayer(Bukkit.getOfflinePlayer(owner), price);
 		player.sendMessage(PSLocale.SIGN_USE_SUCCESS_SELF.get().replace("{price}", price + ""));
 		Player signOwner = Bukkit.getPlayer(owner);
-		if(signOwner != null) {
+		if(signOwner != null) { // Player owning the sign is online
 			signOwner.sendMessage(PSLocale.SIGN_USE_SUCCESS_OWNER.get().replace("{player}", player.getName()).replace("{price}", price + "").replace("{desc}", description));
 		}
 		Material type = getSignBlock().getType();
@@ -85,7 +110,11 @@ public class PowerSign {
 		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(PowerSignsPlugin.instance, () -> getSignBlock().setType(type), 5L);
 		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(PowerSignsPlugin.instance, () -> getSignBlock().setData(data), 5L);
 	}
-	
+
+    /**
+     * Gets the block the sign is standing on or attached to
+     * @return The block the sign is standing on or attached to
+     */
 	public Block getSignBlock() {
 		if(loc.getWorld() != null) {
 			Block block = loc.getWorld().getBlockAt(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ());
@@ -117,6 +146,9 @@ public class PowerSign {
 		return price;
 	}
 
+    /**
+     * @return the location
+     */
 	public Location getLoc() {
 		return loc;
 	}
