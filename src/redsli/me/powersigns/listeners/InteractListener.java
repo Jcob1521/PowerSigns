@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
+import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -19,7 +20,7 @@ import redsli.me.powersigns.objects.PowerSign;
  */
 public class InteractListener implements Listener {
 	
-	private HashMap<UUID, Long> cooldowns = new HashMap<>();
+	private HashMap<Block, Long> cooldowns = new HashMap<>();
 	
 	@EventHandler
 	public void onInteract(PlayerInteractEvent e) {
@@ -29,9 +30,9 @@ public class InteractListener implements Listener {
 				if(p.hasPermission("powersigns.sign.use")) {
 					PowerSign ps = PowerSign.getPowerSign(e.getClickedBlock());
 					if(PowerSignsPlugin.getEconomy().has(p, ps.getPrice()))
-						if(!isOnCooldown(p)) {
+						if(!isOnCooldown(ps.getSignBlock())) {
 							ps.use(p);
-							cooldown(p);
+							cooldown(ps.getSignBlock());
 						} else
 							p.sendMessage(PSLocale.SIGN_USE_ERROR_COOLDOWN.get());
 					else
@@ -43,14 +44,13 @@ public class InteractListener implements Listener {
 	}
 
 	/**
-	 * Checks if the player is on cooldown
-	 * @param player The player to check
-	 * @return Whether the player is on cooldown or not
+	 * Checks if the sign is on cooldown
+	 * @param b The block of the sign to check
+	 * @return Whether the sign is on cooldown or not
 	 */
-	private boolean isOnCooldown(Player player) {
-		UUID uuid = player.getUniqueId();
-		if(cooldowns.containsKey(uuid)) {
-			if(System.currentTimeMillis() - cooldowns.get(uuid) < TimeUnit.SECONDS.toMillis(PowerSignsPlugin.instance.getConfig().getInt("cooldown")))
+	private boolean isOnCooldown(Block b) {
+		if(cooldowns.containsKey(b)) {
+			if(System.currentTimeMillis() - cooldowns.get(b) < TimeUnit.SECONDS.toMillis(PowerSignsPlugin.instance.getConfig().getInt("cooldown")))
 				return true;
 		}
 		return false;
@@ -58,11 +58,10 @@ public class InteractListener implements Listener {
 
 
     /**
-     * Sets the player on the cooldown specified in config.yml
-     * @param player The player to be cooldown'd
+     * Sets the sign on the cooldown specified in config.yml
+     * @param b The player to be cooldown'd
      */
-	private void cooldown(Player player) {
-		UUID uuid = player.getUniqueId();
-		cooldowns.put(uuid, System.currentTimeMillis());
+	private void cooldown(Block b) {
+		cooldowns.put(b, System.currentTimeMillis());
 	}
 }
