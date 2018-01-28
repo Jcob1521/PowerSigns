@@ -1,30 +1,29 @@
 package redsli.me.powersigns.objects;
 
-import java.util.UUID;
-
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.OfflinePlayer;
+import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.material.Sign;
-
 import redsli.me.powersigns.PowerSignsPlugin;
 import redsli.me.powersigns.events.PowerSignUseEvent;
 import redsli.me.powersigns.locale.PSLocale;
 import redsli.me.powersigns.util.Utils;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
 /**
  * Created by redslime on 15.10.2017
  */
 public class PowerSign {
+
+	public static List<PowerSign> powerSigns = new ArrayList<>();
 	
 	private UUID owner;
 	private String description;
 	private double price;
-	private Location loc;
+	private SerializableLocation loc;
 
     /**
      * PowerSign constructor
@@ -37,7 +36,9 @@ public class PowerSign {
 		this.owner = owner;
 		this.description = description;
 		this.price = price;
-		this.loc = loc;
+		this.loc = new SerializableLocation(loc);
+
+		powerSigns.add(this);
 	}
 
     /**
@@ -49,7 +50,7 @@ public class PowerSign {
 		if(block.getType() != null) {
 			if(block.getType() == Material.SIGN_POST || block.getType() == Material.WALL_SIGN) {
 				org.bukkit.block.Sign sign = (org.bukkit.block.Sign) block.getState();
-				if(sign.getLines() != null) {
+				if(sign.getLines() != null && !sign.getLine(1).trim().isEmpty() && !sign.getLine(3).trim().isEmpty()) {
 					if(ChatColor.stripColor(sign.getLine(0)).equalsIgnoreCase("[SIGNAL]")) {
 						if(Bukkit.getOfflinePlayer(sign.getLine(1)).hasPlayedBefore()) {
 							if(Utils.isNumber(sign.getLine(3))) {
@@ -75,7 +76,11 @@ public class PowerSign {
 				OfflinePlayer player = Bukkit.getOfflinePlayer(sign.getLine(1));
 				if(Bukkit.getOfflinePlayer(sign.getLine(1)).hasPlayedBefore()) {
 					if(Utils.isNumber(sign.getLine(3))) {
-						return new PowerSign(player.getUniqueId(), sign.getLine(2), Integer.valueOf(sign.getLine(3)), loc);
+						for(PowerSign ps : powerSigns) {
+							if(ps.owner.toString().equals(player.getUniqueId().toString()) && ps.description.equalsIgnoreCase(sign.getLine(2)) && ps.price == Double.valueOf(sign.getLine(3)) && ps.loc.equals(loc)) {
+								return ps;
+							}
+						}
 					}
 				}
 			}
@@ -106,9 +111,10 @@ public class PowerSign {
 		}
 		Material type = getSignBlock().getType();
 		byte data = getSignBlock().getData();
+		long delay = PowerSignsPlugin.instance.getConfig().getLong("power-duration") * 20;
 		getSignBlock().setType(Material.REDSTONE_BLOCK);
-		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(PowerSignsPlugin.instance, () -> getSignBlock().setType(type), 5L);
-		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(PowerSignsPlugin.instance, () -> getSignBlock().setData(data), 5L);
+		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(PowerSignsPlugin.instance, () -> getSignBlock().setType(type), delay);
+		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(PowerSignsPlugin.instance, () -> getSignBlock().setData(data), delay);
 	}
 
     /**
@@ -116,6 +122,7 @@ public class PowerSign {
      * @return The block the sign is standing on or attached to
      */
 	public Block getSignBlock() {
+		Location loc = this.loc.toLocation();
 		if(loc.getWorld() != null) {
 			Block block = loc.getWorld().getBlockAt(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ());
 			Sign sign = (Sign) block.getState().getData();
@@ -150,6 +157,6 @@ public class PowerSign {
      * @return the location
      */
 	public Location getLoc() {
-		return loc;
+		return loc.toLocation();
 	}
 }

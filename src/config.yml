@@ -1,9 +1,46 @@
-# PowerSigns Configuration File
-
-# the plugin language. see all languages in plugins/PowerSigns/locale/
-# help me translate! you can submit translations on the github page
+# ####################################
+#   POWERSIGNS CONFIG DOCUMENTATION  #
+# ####################################
+# #
+# #########
+#  'lang' # the plugin language. see all languages in plugins/PowerSigns/locale/
+#         # help me translate! you can submit translations on the github page
+# #########
+# #
+# #############
+#  'cooldown' # the cooldown every player has to wait before they can use a powersign again in seconds
+#             # do NOT set this to 0, it may glitch out blocks
+# #############
+# #
+# ###################
+#  'power-duration' # how long the redstone signal shall be sent in seconds
+# ###################
+# #
+# #########################
+#  'confirmation.enabled' # whether a confirmation is needed to confirm the payment for transaction above value X
+# #########################
+# #
+# ########################
+#  'confirmation.value' # the minimum value when a confirmation is needed
+# #######################
+# #
+# ###################
+#  'exclude-worlds' # a list of worlds in which powersigns are disabled
+#                   # this will prevent players from creating new powersigns, and using existing ones
+# ###################
+# #
+# ###################
+#     LIMITS        # You can limit the amount of PowerSigns a player can create. This is done with powersigns.limit.* permissions.
+#                   # See the full documentation here: https://github.com/hallopiu/PowerSigns/wiki/Limits
+# ###################
+# DO NOT CHANGE THE VERSION!!
+version: 1.1-pre
 lang: en-US
-
-# the cooldown every player has to wait before they can use a powersign again in seconds
-# do NOT set this to 0, it may glitch out blocks
 cooldown: 5
+power-duration: 1
+confirmation.enabled: true
+confirmation.value: 5000
+exclude-worlds: []
+
+limit:
+  default: -1

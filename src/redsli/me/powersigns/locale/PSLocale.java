@@ -1,13 +1,12 @@
 package redsli.me.powersigns.locale;
 
-import java.io.File;
-import java.util.logging.Logger;
-
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.YamlConfiguration;
-
 import redsli.me.powersigns.PowerSignsPlugin;
 import redsli.me.powersigns.util.UTF8YamlConfiguration;
+
+import java.io.File;
+import java.util.logging.Logger;
 
 /**
  * Created by redslime on 16.10.2017
@@ -21,18 +20,27 @@ public enum PSLocale {
 	FORMAT_SUCCESS("format.success", "&a> &7"),
 	FORMAT_ERROR("format.error", "&c> &7"),
 	FORMAT_INFO("format.info", "  §b* §7"),
+    PLUGIN_UPDATE("plugin.update", "&9PowerSigns: New version &b{version} &9is available! &7&o(Click to download)"),
 	SIGN_DESCRIPTION("sign.description", "Description"),
 	SIGN_PRICE("sign.price", "Price"),
-	SIGN_DESTROY("sign.destroy", "{$format.success} PowerSign has been removed!"),
+    SIGN_ERROR_LONG("sign.error.long", "{$format.error} An error occurred! Please re-create the PowerSign"),
+    SIGN_ERROR_SHORT("sign.error.short", "&cError"),
 	SIGN_USE_DENIED("sign.use.denied", "{$format.error} You don't have permissions to use this PowerSign!"),
 	SIGN_USE_SUCCESS_SELF("sign.use.success.self", "{$format.success} You activated the PowerSign for &e${price}"),
 	SIGN_USE_SUCCESS_OWNER("sign.use.success.owner", "{$format.prefix} &e{player} &7used your PowerSign for &e${price}"),
 	SIGN_USE_ERROR_NOMONEY("sign.use.error.nomoney", "{$format.error} You don't have enough money!"),
 	SIGN_USE_ERROR_COOLDOWN("sign.use.error.cooldown", "{$format.error} Please wait a few seconds before using this PowerSign again!"),
+    SIGN_USE_ERROR_WORLDDISABLED("sign.use.error.worlddisabled", "{$sign.create.error.worlddisabled}"),
+    SIGN_USE_CONFIRM_HELP("sign.use.confirm.help", "&4Confirm payment of &c${value} &4for &c{description}"),
+    SIGN_USE_CONFIRM_TITLE("sign.use.confirm.title", "&4Confirmation needed"),
+    SIGN_USE_CONFIRM_YES("sign.use.confirm.continue", "&aYES"),
+    SIGN_USE_CONFIRM_NO("sign.use.confirm.cancel", "&cNO"),
 	SIGN_CREATE_DENIED_SELF("sign.create.denied.self", "{$format.error} You don't have permissions to create a PowerSign"),
 	SIGN_CREATE_DENIED_OTHER("sign.create.denied.other", "{$format.error} You can only create a PowerSign with your name"),
 	SIGN_CREATE_ERROR_PLAYERNOTFOUND("sign.create.error.playernotfound", "{$format.error} Couldn't find a player named &b{player}"),
 	SIGN_CREATE_ERROR_INVALIDNUMBER("sign.create.error.invalidnumber", "{$format.error} &b{number} &7is not a number!"),
+    SIGN_CREATE_ERROR_WORLDDISABLED("sign.create.error.worlddisabled", "{$format.error} PowerSigns are disabled in this world!"),
+    SIGN_CREATE_ERROR_LIMITREACHED("sign.create.error.limitreached", "{$format.error} You have reached the limit of PowerSigns you can create!"),
 	SIGN_CREATE_HELP("sign.create.help", "{$format.info} &fA valid PowerSign looks like this:"),
 	SIGN_CREATE_SUCCESS("sign.create.success", "{$format.success} Successfully created a new PowerSign");
 	
@@ -70,6 +78,11 @@ public enum PSLocale {
 			return process(default_, false); // process fallback value instead
 		}
 		YamlConfiguration langFile = new UTF8YamlConfiguration(new File(LOCALE_FOLDER, lang + ".yml")); // get yamlconfiguration (using UTF8YC here so characters such as äöü are displayed correctly)
+        if(!langFile.contains(path)) {
+            Logger.getLogger("Minecraft").severe(String.format("[%s] Message path " + path + " not found in active locale", PowerSignsPlugin.instance.getDescription().getName()));
+            Logger.getLogger("Minecraft").severe(String.format("[%s] Using en-US as backup", PowerSignsPlugin.instance.getDescription().getName()));
+            return process(default_, false); // process fallback value instead
+        }
 		return process(langFile.getString(path), true); // return processed value
 	}
 
@@ -80,7 +93,7 @@ public enum PSLocale {
      * @return The processed input string
      */
 	private String process(String input, boolean allowLoop) {
-		input = ChatColor.translateAlternateColorCodes('&', input);
+        input = ChatColor.translateAlternateColorCodes('&', input);
 		for(String word : input.split(" ")) {
 			if(word.matches("\\{\\$(.*)\\}")) { // regex, input starts with '{$' and ends with '}'
 				String otherPath = word.replaceAll("\\{\\$(.*)\\}", "$1"); // get value between '{$' and '}'

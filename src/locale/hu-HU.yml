@@ -15,7 +15,6 @@ format.error: "&c>&7"
 format.info: "  &b*&7"
 sign.description: "Leírás"
 sign.price: "Ár"
-sign.destroy: "{$format.success} PowerSign törölve!"
 sign.use:
   denied: "{$format.error} Nincs jogod használni a PowerSign-et!"
   success:
