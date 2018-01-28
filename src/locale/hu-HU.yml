@@ -13,16 +13,25 @@ format.prefix: "&9[&b&lPower&r&3Signs&9]"
 format.success: "&a>&7"
 format.error: "&c>&7"
 format.info: "  &b*&7"
+plugin.update: "&9PowerSigns: Új verzió &b{version} &9elérhető! &7&o(Kattints a letöltéshez)"
 sign.description: "Leírás"
 sign.price: "Ár"
+sign.error.long: "{$format.error} Hiba lépett fel! Kérlek, hozz létre egy PowerSign-et"
+sign.error.short: "&4Hiba"
 sign.use:
   denied: "{$format.error} Nincs jogod használni a PowerSign-et!"
   success:
-    self: "{$format.success} Aktiválva a PowerSign a(z) &e${price}"
+    self: "{$format.success} Aktiválva a PowerSign &e${price}"
     owner: "{$format.prefix} &e{player} &7használta a PowerSign-et &3{desc} &e${price}"
   error:
     nomoney: "{$format.error} Nincs elég pénzed!"
     cooldown: "{$format.error} Kérjük, várj néhány másodpercet, mielőtt újra használni fogod ezt a PowerSign-et!"
+    worlddisabled: "{$sign.create.error.worlddisabled}"
+  confirm:
+    help: "&4Fizetés megerősítése &c${value} &4a(z) &c{description}"
+    title: "&4Megerősítés szükséges"
+    continue: "&aIGEN"
+    cancel: "&cNEM"
 sign.create:
   denied:
     self: "{$format.error} Nincs jogod létrehozni egy PowerSign táblát"
@@ -30,5 +39,7 @@ sign.create:
   error:
     playernotfound: "{$format.error} Nem található &b{player} nevű játékos"
     invalidnumber: "{$format.error} &b{number} &7nem egy szám!"
-  success: "{$format.success} Sikeresen létrehozott egy új PowerSign-et"
+    worlddisabled: "{$format.error} A PowerSigns letiltva ebben a világban!"
+    limitreached: "{$format.error} Elérted a létrehozható PowerSigns határt!"
+  success: "{$format.success} Sikeresen létrehoztál egy új PowerSign-et"
   help: "{$format.info} &fAz érvényes PowerSign így néz ki:"
