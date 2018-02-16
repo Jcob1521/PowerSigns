@@ -14,6 +14,8 @@ This is very straight forward. Place a sign and follow the format below:<br><br>
 - ``powersigns.sign.use``: Player can click on a PowerSign to activate (Enabled by default) 
 - ``powersigns.sign.create.self``: Player can create a PowerSign for themselves (Enabled by default)
 - ``powersigns.sign.create.other``: Player can create a PowerSign for other players
+- ``powersigns.limit.#`` / ``powersigns.limit.xxx``: see documentation [here](https://github.com/hallopiu/PowerSigns/wiki/Limits)
+- ``powersigns.sign.disabled.bypass``: Player can create/use PowerSigns in exluded worlds
 
 ## Bug reports, suggestions, ideas
 Please create a new ticket [here](https://github.com/hallopiu/PowerSigns/issues)
