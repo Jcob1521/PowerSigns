@@ -1,10 +1,12 @@
-# PowerSigns [![Minecraft 1.8-1.12.2](https://img.shields.io/badge/Minecraft-1.8--1.12.2-red.svg)](#) [![JDK 1.8](https://img.shields.io/badge/JDK-1.8-blue.svg)](#) [![Spigot project page](https://img.shields.io/badge/Spigot-Project%20Page-yellow.svg)](https://www.spigotmc.org/resources/powersigns.51501/)
+# PowerSigns [![Minecraft 1.13-1.15.2](https://img.shields.io/badge/Minecraft-1.13--1.15.2-red.svg)](#) [![JDK 1.8](https://img.shields.io/badge/JDK-1.8-blue.svg)](#) [![Spigot project page](https://img.shields.io/badge/Spigot-Project%20Page-yellow.svg)](https://www.spigotmc.org/resources/powersigns.51501/)
 ![PowerSigns demonstration](https://i.imgur.com/BUuEPDe.png)<br>
 Minecraft Bukkit/Spigot Plugin allowing players to activate redstone mechanisms in return of money. Extremly useful for casinos, mob farms, VIP areas, firework shows and much more...
 Requires [Vault](https://www.spigotmc.org/resources/vault.41918/).
 
 ## Download
 Download on the spigot resource page: https://www.spigotmc.org/resources/powersigns.51501/
+##### Looking for compatible version for 1.8-1.12?
+On the above download page, download version 1.1 or older.
 
 ## Making a new PowerSign
 This is very straight forward. Place a sign and follow the format below:<br><br>
