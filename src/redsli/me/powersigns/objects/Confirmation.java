@@ -91,9 +91,9 @@ public class Confirmation implements Listener {
 
         if(e.getSlotType() == InventoryType.SlotType.CONTAINER && e.getCurrentItem() != null) {
             for(Confirmation confirmation : confirmations) {
-                if(e.getInventory().getName() == confirmation.title) {
+                if(e.getInventory().getViewers().contains(confirmation.p)) {
                     e.setCancelled(true);
-                    if(e.getCurrentItem().getType() != Material.SKULL_ITEM)
+                    if(e.getCurrentItem().getType() != Material.PLAYER_HEAD)
                         p.getOpenInventory().close();
                     if(e.getCurrentItem().getType() == Material.EMERALD_BLOCK) {
                         confirmation.ps.use(p);

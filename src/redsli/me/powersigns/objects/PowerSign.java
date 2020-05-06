@@ -2,8 +2,10 @@ package redsli.me.powersigns.objects;
 
 import org.bukkit.*;
 import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
+import org.bukkit.block.data.BlockData;
+import org.bukkit.block.data.type.WallSign;
 import org.bukkit.entity.Player;
-import org.bukkit.material.Sign;
 import redsli.me.powersigns.PowerSignsPlugin;
 import redsli.me.powersigns.events.PowerSignUseEvent;
 import redsli.me.powersigns.locale.PSLocale;
@@ -48,7 +50,7 @@ public class PowerSign {
      */
 	public static boolean isPowerSign(Block block) {
 		if(block.getType() != null) {
-			if(block.getType() == Material.SIGN_POST || block.getType() == Material.WALL_SIGN) {
+			if(block.getBlockData() instanceof org.bukkit.block.data.type.Sign || block.getBlockData() instanceof WallSign) {
 				org.bukkit.block.Sign sign = (org.bukkit.block.Sign) block.getState();
 				if(sign.getLines() != null && !sign.getLine(1).trim().isEmpty() && !sign.getLine(3).trim().isEmpty()) {
 					if(ChatColor.stripColor(sign.getLine(0)).equalsIgnoreCase("[SIGNAL]")) {
@@ -110,11 +112,11 @@ public class PowerSign {
 			signOwner.sendMessage(PSLocale.SIGN_USE_SUCCESS_OWNER.get().replace("{player}", player.getName()).replace("{price}", price + "").replace("{desc}", description));
 		}
 		Material type = getSignBlock().getType();
-		byte data = getSignBlock().getData();
+		BlockData blockData = getSignBlock().getBlockData();
 		long delay = PowerSignsPlugin.instance.getConfig().getLong("power-duration") * 20;
 		getSignBlock().setType(Material.REDSTONE_BLOCK);
 		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(PowerSignsPlugin.instance, () -> getSignBlock().setType(type), delay);
-		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(PowerSignsPlugin.instance, () -> getSignBlock().setData(data), delay);
+		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(PowerSignsPlugin.instance, () -> getSignBlock().setBlockData(blockData), delay);
 	}
 
     /**
@@ -125,9 +127,12 @@ public class PowerSign {
 		Location loc = this.loc.toLocation();
 		if(loc.getWorld() != null) {
 			Block block = loc.getWorld().getBlockAt(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ());
-			Sign sign = (Sign) block.getState().getData();
-			block = block.getRelative(sign.getAttachedFace());
-			return block;
+			if(block.getBlockData() instanceof WallSign) {
+				WallSign sign = (WallSign) block.getBlockData();
+				return block.getRelative(sign.getFacing().getOppositeFace());
+			} else {
+				return block.getRelative(BlockFace.DOWN);
+			}
 		}
 		return null;
 	}

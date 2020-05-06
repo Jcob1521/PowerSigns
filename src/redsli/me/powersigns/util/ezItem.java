@@ -32,22 +32,22 @@ public class ezItem {
     }
 
     public static ItemStack getTrue() {
-        return new ezItem(Material.INK_SACK, 1, (short) 10).withDisplayName(" ").get();
+        return new ezItem(Material.LIME_DYE).withDisplayName(" ").get();
     }
 
     public static ItemStack getFalse() {
-        return new ezItem(Material.INK_SACK, 1, (short) 8).withDisplayName(" ").get();
+        return new ezItem(Material.RED_DYE).withDisplayName(" ").get();
     }
 
     public static ItemStack getBlank() {
-        return new ezItem(Material.STAINED_GLASS_PANE, 1, (short) 15).withDisplayName(" ").get();
+        return new ezItem(Material.BLACK_STAINED_GLASS_PANE).withDisplayName(" ").get();
     }
 
     public static ItemStack getSkull(String owner, String displayName) {
-        SkullMeta meta = (SkullMeta) Bukkit.getItemFactory().getItemMeta(Material.SKULL_ITEM);
+        SkullMeta meta = (SkullMeta) Bukkit.getItemFactory().getItemMeta(Material.PLAYER_HEAD);
         meta.setOwner(owner);
         meta.setDisplayName(displayName);
-        ItemStack stack = new ItemStack(Material.SKULL_ITEM, 1, (byte) 3);
+        ItemStack stack = new ItemStack(Material.PLAYER_HEAD);
         stack.setItemMeta(meta);
         return stack;
     }
