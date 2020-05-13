@@ -21,19 +21,22 @@ import java.util.UUID;
 public class PowerSign {
 
 	public static List<PowerSign> powerSigns = new ArrayList<>();
-	
+
 	private UUID owner;
 	private String description;
 	private double price;
 	private SerializableLocation loc;
 
-    /**
-     * PowerSign constructor
-     * @param owner The UUID of the player name given in line 2 of the sign
-     * @param description The description, line 3
-     * @param price The price to pay in order to use the sign, line 4
-     * @param loc The location of the sign
-     */
+	private transient boolean active; // whether the redstone block is placed
+
+	/**
+	 * PowerSign constructor
+	 *
+	 * @param owner       The UUID of the player name given in line 2 of the sign
+	 * @param description The description, line 3
+	 * @param price       The price to pay in order to use the sign, line 4
+	 * @param loc         The location of the sign
+	 */
 	public PowerSign(UUID owner, String description, double price, Location loc) {
 		this.owner = owner;
 		this.description = description;
@@ -103,6 +106,7 @@ public class PowerSign {
      * @param player The player using the PowerSign
      */
 	public void use(Player player) {
+		active = true;
 		Bukkit.getPluginManager().callEvent(new PowerSignUseEvent(player, this));
 		PowerSignsPlugin.getEconomy().withdrawPlayer(player, price);
 		PowerSignsPlugin.getEconomy().depositPlayer(Bukkit.getOfflinePlayer(owner), price);
@@ -115,8 +119,11 @@ public class PowerSign {
 		BlockData blockData = getSignBlock().getBlockData();
 		long delay = PowerSignsPlugin.instance.getConfig().getLong("power-duration") * 20;
 		getSignBlock().setType(Material.REDSTONE_BLOCK);
-		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(PowerSignsPlugin.instance, () -> getSignBlock().setType(type), delay);
-		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(PowerSignsPlugin.instance, () -> getSignBlock().setBlockData(blockData), delay);
+		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(PowerSignsPlugin.instance, () -> {
+			getSignBlock().setType(type);
+			getSignBlock().setBlockData(blockData);
+			active = false;
+		}, delay);
 	}
 
     /**
@@ -158,10 +165,14 @@ public class PowerSign {
 		return price;
 	}
 
-    /**
-     * @return the location
-     */
+	/**
+	 * @return the location
+	 */
 	public Location getLoc() {
 		return loc.toLocation();
+	}
+
+	public boolean isActive() {
+		return active;
 	}
 }
