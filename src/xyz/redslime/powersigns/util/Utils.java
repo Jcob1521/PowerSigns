@@ -23,14 +23,21 @@ public class Utils {
      * @param str The string to be checked
      * @return Whether the given string is a double/number
      */
-	public static boolean isNumber(String str) {
-		try {
-			Double.parseDouble(str);
-		} catch(NumberFormatException e) {
-			return false;
-		}
-		return true;
-	}
+    public static boolean isNumber(String str) {
+        try {
+            Double.parseDouble(str);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Checks if the given double is a decimal number
+     */
+    public static boolean isDecimal(double n) {
+        return n % 1 != 0;
+    }
 
     /**
      * Returns whether a PowerSign may created/used in the player's world or the player can bypass it

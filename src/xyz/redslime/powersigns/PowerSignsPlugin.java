@@ -1,5 +1,6 @@
 package xyz.redslime.powersigns;
 
+import lombok.Getter;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
@@ -36,32 +37,37 @@ public class PowerSignsPlugin extends JavaPlugin {
 
     public static final int RESOURCE_ID = 51501; // the spigot resource id
 
-	private static Economy economy; // the vault economy
-	private static Metrics metrics; // bStats metrics
-	public static PowerSignsPlugin instance; // instance of this class
+    private static Economy economy; // the vault economy
+    private static Metrics metrics; // bStats metrics
+    public static PowerSignsPlugin instance; // instance of this class
     public static File dataFile;
+
+    @Getter
+    private boolean decimalPricesAllowed;
 
     /**
      * Called on startup of the plugin. Initializes everything
      */
-	public void onEnable() {
-		instance = this;
-		metrics = new Metrics(this);
+    public void onEnable() {
+        instance = this;
+        metrics = new Metrics(this);
         dataFile = new File(getDataFolder(), "signs.json");
         Utils.loadPowerSigns();
-		setupData();
+        setupData();
 		registerListeners();
-		registerCommands();
-		checkUpdate();
+        registerCommands();
+        checkUpdate();
 
-		// check if vault can find a economy system
-		if(!setupEconomy()) {
+        // check if vault can find a economy system
+        if(!setupEconomy()) {
             // economy system not found, shutting down
             Logger.getLogger("Minecraft").severe(String.format("[%s] Disabled due to no Economy system plugin found!", getDescription().getName()));
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
-	}
+
+        decimalPricesAllowed = getConfig().getBoolean("decimal-prices");
+    }
 
     /**
      * Called on shutdown of the plugin. Saves PowerSigns to file

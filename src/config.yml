@@ -29,6 +29,10 @@
 #                   # this will prevent players from creating new powersigns, and using existing ones
 # ###################
 # #
+# ######################
+#  'decimal-prices' # whether decimal number prices are allowed
+# ######################
+# #
 # ###################
 #     LIMITS        # You can limit the amount of PowerSigns a player can create. This is done with powersigns.limit.* permissions.
 #                   # See the full documentation here: https://github.com/redslime/PowerSigns/wiki/Limits
@@ -41,6 +45,7 @@ power-duration: 1
 confirmation.enabled: true
 confirmation.value: 5000
 exclude-worlds: []
+decimal-prices: true
 
 limit:
   default: -1
