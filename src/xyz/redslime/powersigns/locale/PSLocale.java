@@ -1,9 +1,9 @@
-package redsli.me.powersigns.locale;
+package xyz.redslime.powersigns.locale;
 
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.YamlConfiguration;
-import redsli.me.powersigns.PowerSignsPlugin;
-import redsli.me.powersigns.util.UTF8YamlConfiguration;
+import xyz.redslime.powersigns.PowerSignsPlugin;
+import xyz.redslime.powersigns.util.UTF8YamlConfiguration;
 
 import java.io.File;
 import java.util.logging.Logger;
@@ -31,26 +31,27 @@ public enum PSLocale {
 	SIGN_USE_ERROR_NOMONEY("sign.use.error.nomoney", "{$format.error} You don't have enough money!"),
 	SIGN_USE_ERROR_COOLDOWN("sign.use.error.cooldown", "{$format.error} Please wait a few seconds before using this PowerSign again!"),
     SIGN_USE_ERROR_WORLDDISABLED("sign.use.error.worlddisabled", "{$sign.create.error.worlddisabled}"),
-    SIGN_USE_CONFIRM_HELP("sign.use.confirm.help", "&4Confirm payment of &c${value} &4for &c{description}"),
-    SIGN_USE_CONFIRM_TITLE("sign.use.confirm.title", "&4Confirmation needed"),
-    SIGN_USE_CONFIRM_YES("sign.use.confirm.continue", "&aYES"),
-    SIGN_USE_CONFIRM_NO("sign.use.confirm.cancel", "&cNO"),
+	SIGN_USE_CONFIRM_HELP("sign.use.confirm.help", "&4Confirm payment of &c${value} &4for &c{description}"),
+	SIGN_USE_CONFIRM_TITLE("sign.use.confirm.title", "&4Confirmation needed"),
+	SIGN_USE_CONFIRM_YES("sign.use.confirm.continue", "&aYES"),
+	SIGN_USE_CONFIRM_NO("sign.use.confirm.cancel", "&cNO"),
 	SIGN_CREATE_DENIED_SELF("sign.create.denied.self", "{$format.error} You don't have permissions to create a PowerSign"),
 	SIGN_CREATE_DENIED_OTHER("sign.create.denied.other", "{$format.error} You can only create a PowerSign with your name"),
 	SIGN_CREATE_ERROR_PLAYERNOTFOUND("sign.create.error.playernotfound", "{$format.error} Couldn't find a player named &b{player}"),
 	SIGN_CREATE_ERROR_INVALIDNUMBER("sign.create.error.invalidnumber", "{$format.error} &b{number} &7is not a number!"),
-    SIGN_CREATE_ERROR_WORLDDISABLED("sign.create.error.worlddisabled", "{$format.error} PowerSigns are disabled in this world!"),
-    SIGN_CREATE_ERROR_LIMITREACHED("sign.create.error.limitreached", "{$format.error} You have reached the limit of PowerSigns you can create!"),
+	SIGN_CREATE_ERROR_WORLDDISABLED("sign.create.error.worlddisabled", "{$format.error} PowerSigns are disabled in this world!"),
+	SIGN_CREATE_ERROR_LIMITREACHED("sign.create.error.limitreached", "{$format.error} You have reached the limit of PowerSigns you can create!"),
+	SIGN_CREATE_ERROR_NODECIMALPRICE("sign.create.error.nodecimalprice", "{$format.error} Decimal number prices are not allowed!"),
 	SIGN_CREATE_HELP("sign.create.help", "{$format.info} &fA valid PowerSign looks like this:"),
 	SIGN_CREATE_SUCCESS("sign.create.success", "{$format.success} Successfully created a new PowerSign");
-	
+
 	public static final File LOCALE_FOLDER = new File(PowerSignsPlugin.instance.getDataFolder() + "/locale/");
 	private String path; // path of message in locale file
 	private String default_; // default value as fallback if nothing was found
 
-    /**
-     * PSLocale constructor
-     * @param path The path of the message in the locale file
+	/**
+	 * PSLocale constructor
+	 * @param path The path of the message in the locale file
      * @param default_ The fallback message if nothing was found
      */
 	PSLocale(String path, String default_) {

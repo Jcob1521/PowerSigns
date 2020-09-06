@@ -1,4 +1,4 @@
-package redsli.me.powersigns.listeners;
+package xyz.redslime.powersigns.listeners;
 
 import org.bukkit.block.Block;
 import org.bukkit.block.Sign;
@@ -7,11 +7,11 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
-import redsli.me.powersigns.PowerSignsPlugin;
-import redsli.me.powersigns.locale.PSLocale;
-import redsli.me.powersigns.objects.Confirmation;
-import redsli.me.powersigns.objects.PowerSign;
-import redsli.me.powersigns.util.Utils;
+import xyz.redslime.powersigns.PowerSignsPlugin;
+import xyz.redslime.powersigns.locale.PSLocale;
+import xyz.redslime.powersigns.objects.Confirmation;
+import xyz.redslime.powersigns.objects.PowerSign;
+import xyz.redslime.powersigns.util.Utils;
 
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;

@@ -1,4 +1,4 @@
-# PowerSigns [![Minecraft 1.13-1.15.2](https://img.shields.io/badge/Minecraft-1.13--1.15.2-red.svg)](#) [![JDK 1.8](https://img.shields.io/badge/JDK-1.8-blue.svg)](#) [![Spigot project page](https://img.shields.io/badge/Spigot-Project%20Page-yellow.svg)](https://www.spigotmc.org/resources/powersigns.51501/)
+# PowerSigns [![Minecraft 1.13-1.16.2](https://img.shields.io/badge/Minecraft-1.13--1.16.2-red.svg)](#) [![JDK 1.8](https://img.shields.io/badge/JDK-1.8-blue.svg)](#) [![Spigot project page](https://img.shields.io/badge/Spigot-Project%20Page-yellow.svg)](https://www.spigotmc.org/resources/powersigns.51501/)
 ![PowerSigns demonstration](https://i.imgur.com/BUuEPDe.png)<br>
 Minecraft Bukkit/Spigot Plugin allowing players to activate redstone mechanisms in return of money. Extremly useful for casinos, mob farms, VIP areas, firework shows and much more...
 Requires [Vault](https://www.spigotmc.org/resources/vault.41918/).
@@ -16,14 +16,14 @@ This is very straight forward. Place a sign and follow the format below:<br><br>
 - ``powersigns.sign.use``: Player can click on a PowerSign to activate (Enabled by default) 
 - ``powersigns.sign.create.self``: Player can create a PowerSign for themselves (Enabled by default)
 - ``powersigns.sign.create.other``: Player can create a PowerSign for other players
-- ``powersigns.limit.#`` / ``powersigns.limit.xxx``: see documentation [here](https://github.com/hallopiu/PowerSigns/wiki/Limits)
+- ``powersigns.limit.#`` / ``powersigns.limit.xxx``: see documentation [here](https://github.com/redslime/PowerSigns/wiki/Limits)
 - ``powersigns.sign.disabled.bypass``: Player can create/use PowerSigns in exluded worlds
 
 ## Bug reports, suggestions, ideas
-Please create a new ticket [here](https://github.com/hallopiu/PowerSigns/issues)
+Please create a new ticket [here](https://github.com/redslime/PowerSigns/issues)
 
 ## Languages
-PowerSigns supports dynamic locale files allowing you to easily switch languages. All locales can be found [here](https://github.com/hallopiu/PowerSigns/tree/master/src/locale). To switch to a different language, edit the ``lang`` value in the [config file](https://github.com/hallopiu/PowerSigns/blob/master/src/config.yml).
+PowerSigns supports dynamic locale files allowing you to easily switch languages. All locales can be found [here](https://github.com/redslime/PowerSigns/tree/master/src/locale). To switch to a different language, edit the ``lang`` value in the [config file](https://github.com/redslime/PowerSigns/blob/master/src/config.yml).
 
 If you can't find a translation for the language you want to use, feel free to submit a translation!
 

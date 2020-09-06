@@ -1,12 +1,11 @@
-package redsli.me.powersigns.util;
-
-import org.bukkit.entity.Player;
+package xyz.redslime.powersigns.util;
 
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ClickEvent.Action;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
+import org.bukkit.entity.Player;
 
 /**
  * Created by redslime on 06.07.2017

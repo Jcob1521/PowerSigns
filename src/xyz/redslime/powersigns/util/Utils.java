@@ -1,4 +1,4 @@
-package redsli.me.powersigns.util;
+package xyz.redslime.powersigns.util;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -6,8 +6,8 @@ import com.google.gson.reflect.TypeToken;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.PermissionAttachmentInfo;
-import redsli.me.powersigns.PowerSignsPlugin;
-import redsli.me.powersigns.objects.PowerSign;
+import xyz.redslime.powersigns.PowerSignsPlugin;
+import xyz.redslime.powersigns.objects.PowerSign;
 
 import java.io.*;
 import java.util.List;
@@ -23,14 +23,21 @@ public class Utils {
      * @param str The string to be checked
      * @return Whether the given string is a double/number
      */
-	public static boolean isNumber(String str) {
-		try {
-			Double.parseDouble(str);
-		} catch(NumberFormatException e) {
-			return false;
-		}
-		return true;
-	}
+    public static boolean isNumber(String str) {
+        try {
+            Double.parseDouble(str);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Checks if the given double is a decimal number
+     */
+    public static boolean isDecimal(double n) {
+        return n % 1 != 0;
+    }
 
     /**
      * Returns whether a PowerSign may created/used in the player's world or the player can bypass it

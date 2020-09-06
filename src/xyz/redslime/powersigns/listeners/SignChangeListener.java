@@ -1,4 +1,4 @@
-package redsli.me.powersigns.listeners;
+package xyz.redslime.powersigns.listeners;
 
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
@@ -6,9 +6,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.SignChangeEvent;
-import redsli.me.powersigns.locale.PSLocale;
-import redsli.me.powersigns.objects.PowerSign;
-import redsli.me.powersigns.util.Utils;
+import xyz.redslime.powersigns.PowerSignsPlugin;
+import xyz.redslime.powersigns.locale.PSLocale;
+import xyz.redslime.powersigns.objects.PowerSign;
+import xyz.redslime.powersigns.util.Utils;
 
 /**
  * Created by redslime on 15.10.2017
@@ -45,21 +46,27 @@ public class SignChangeListener implements Listener {
 					return;
 				}
 				if(Utils.isNumber(ChatColor.stripColor(lines[3]))) { // line 4 is a number -> price
-                    if(Utils.isAllowedHere(p)) { // world is not excluded in config
-                        if(Utils.canCreateMorePowerSigns(p)) {
-                            // success! updating first line with color codes and setting player name with correct capitalisation
-                            e.setLine(0, "§4[SIGNAL]");
-                            e.setLine(1, Bukkit.getOfflinePlayer(lines[1]).getName());
-                            new PowerSign(p.getUniqueId(), lines[2], Double.valueOf(lines[3]), e.getBlock().getLocation());
-                            p.sendMessage(PSLocale.SIGN_CREATE_SUCCESS.get());
-                        } else {
-                            p.sendMessage(PSLocale.SIGN_CREATE_ERROR_LIMITREACHED.get());
-                            e.setCancelled(true);
-                        }
-                    } else {
-                        p.sendMessage(PSLocale.SIGN_CREATE_ERROR_WORLDDISABLED.get());
-                        e.setCancelled(true);
-                    }
+					double price = Double.valueOf(lines[3]);
+					if(PowerSignsPlugin.instance.isDecimalPricesAllowed() || !Utils.isDecimal(price)) { // price passes decimal-price rule check
+						if(Utils.isAllowedHere(p)) { // world is not excluded in config
+							if(Utils.canCreateMorePowerSigns(p)) {
+								// success! updating first line with color codes and setting player name with correct capitalisation
+								e.setLine(0, "§4[SIGNAL]");
+								e.setLine(1, Bukkit.getOfflinePlayer(lines[1]).getName());
+								new PowerSign(p.getUniqueId(), lines[2], Double.valueOf(lines[3]), e.getBlock().getLocation());
+								p.sendMessage(PSLocale.SIGN_CREATE_SUCCESS.get());
+							} else {
+								p.sendMessage(PSLocale.SIGN_CREATE_ERROR_LIMITREACHED.get());
+								e.setCancelled(true);
+							}
+						} else {
+							p.sendMessage(PSLocale.SIGN_CREATE_ERROR_WORLDDISABLED.get());
+							e.setCancelled(true);
+						}
+					} else {
+						e.setCancelled(true);
+						p.sendMessage(PSLocale.SIGN_CREATE_ERROR_NODECIMALPRICE.get());
+					}
 				} else { // line 4 is not a number
 					e.setCancelled(true);
 					if(!ChatColor.stripColor(lines[3]).equalsIgnoreCase("")) { // line 4 is not empty

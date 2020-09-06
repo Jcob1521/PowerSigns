@@ -41,5 +41,6 @@ sign.create:
     invalidnumber: "{$format.error} &b{number} &7is not a number!"
     worlddisabled: "{$format.error} PowerSigns are disabled in this world!"
     limitreached: "{$format.error} You have reached the limit of PowerSigns you can create!"
+    nodecimalprice: "{$format.error} Decimal number prices are not allowed!"
   success: "{$format.success} Successfully created a new PowerSign"
   help: "{$format.info} &fA valid PowerSign looks like this:"

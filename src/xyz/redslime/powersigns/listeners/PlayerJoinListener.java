@@ -1,4 +1,4 @@
-package redsli.me.powersigns.listeners;
+package xyz.redslime.powersigns.listeners;
 
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.entity.Player;
@@ -25,7 +25,6 @@ public class PlayerJoinListener implements Listener {
             for(TextComponent opMessage : opMessages) {
                 p.spigot().sendMessage(opMessage);
             }
-            opMessages.clear();
         }
     }
 }

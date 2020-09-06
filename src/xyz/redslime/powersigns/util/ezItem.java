@@ -1,4 +1,4 @@
-package redsli.me.powersigns.util;
+package xyz.redslime.powersigns.util;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;

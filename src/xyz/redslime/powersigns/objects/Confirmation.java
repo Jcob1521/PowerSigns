@@ -1,4 +1,4 @@
-package redsli.me.powersigns.objects;
+package xyz.redslime.powersigns.objects;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -8,10 +8,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
-import redsli.me.powersigns.PowerSignsPlugin;
-import redsli.me.powersigns.listeners.InteractListener;
-import redsli.me.powersigns.locale.PSLocale;
-import redsli.me.powersigns.util.ezItem;
+import xyz.redslime.powersigns.PowerSignsPlugin;
+import xyz.redslime.powersigns.listeners.InteractListener;
+import xyz.redslime.powersigns.locale.PSLocale;
+import xyz.redslime.powersigns.util.ezItem;
 
 import java.util.ArrayList;
 import java.util.List;

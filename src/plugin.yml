@@ -1,8 +1,8 @@
 name: PowerSigns
 author: redslime
-version: 1.13.1
-main: redsli.me.powersigns.PowerSignsPlugin
-website: https://github.com/hallopiu/PowerSigns
+version: 1.13.2
+main: xyz.redslime.powersigns.PowerSignsPlugin
+website: https://github.com/redslime/PowerSigns
 depend: [Vault]
 api-version: 1.13
 

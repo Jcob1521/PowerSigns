@@ -1,11 +1,11 @@
-package redsli.me.powersigns.listeners;
+package xyz.redslime.powersigns.listeners;
 
 import org.bukkit.GameMode;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
-import redsli.me.powersigns.objects.PowerSign;
-import redsli.me.powersigns.objects.SerializableLocation;
+import xyz.redslime.powersigns.objects.PowerSign;
+import xyz.redslime.powersigns.objects.SerializableLocation;
 
 /**
  * Created by redslime on 27.01.2018

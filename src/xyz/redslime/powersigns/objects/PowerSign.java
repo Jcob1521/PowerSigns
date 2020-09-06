@@ -1,23 +1,26 @@
-package redsli.me.powersigns.objects;
+package xyz.redslime.powersigns.objects;
 
+import lombok.Getter;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.block.data.type.WallSign;
 import org.bukkit.entity.Player;
-import redsli.me.powersigns.PowerSignsPlugin;
-import redsli.me.powersigns.events.PowerSignUseEvent;
-import redsli.me.powersigns.locale.PSLocale;
-import redsli.me.powersigns.util.Utils;
+import xyz.redslime.powersigns.PowerSignsPlugin;
+import xyz.redslime.powersigns.events.PowerSignUseEvent;
+import xyz.redslime.powersigns.locale.PSLocale;
+import xyz.redslime.powersigns.util.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.logging.Logger;
 
 /**
  * Created by redslime on 15.10.2017
  */
+@Getter
 public class PowerSign {
 
 	public static List<PowerSign> powerSigns = new ArrayList<>();
@@ -107,9 +110,10 @@ public class PowerSign {
      */
 	public void use(Player player) {
 		active = true;
+		OfflinePlayer recipient = Bukkit.getOfflinePlayer(owner);
 		Bukkit.getPluginManager().callEvent(new PowerSignUseEvent(player, this));
 		PowerSignsPlugin.getEconomy().withdrawPlayer(player, price);
-		PowerSignsPlugin.getEconomy().depositPlayer(Bukkit.getOfflinePlayer(owner), price);
+		PowerSignsPlugin.getEconomy().depositPlayer(recipient, price);
 		player.sendMessage(PSLocale.SIGN_USE_SUCCESS_SELF.get().replace("{price}", price + ""));
 		Player signOwner = Bukkit.getPlayer(owner);
 		if(signOwner != null) { // Player owning the sign is online
@@ -124,6 +128,7 @@ public class PowerSign {
 			getSignBlock().setBlockData(blockData);
 			active = false;
 		}, delay);
+		Logger.getLogger("Minecraft").info(String.format("[%s] %s paid %s to %s via a PowerSign ('%s')", PowerSignsPlugin.instance.getDescription().getName(), player.getName(), price, recipient.getName(), description));
 	}
 
     /**
@@ -142,37 +147,5 @@ public class PowerSign {
 			}
 		}
 		return null;
-	}
-	
-	/**
-	 * @return the owner
-	 */
-	public UUID getOwner() {
-		return owner;
-	}
-	
-	/**
-	 * @return the description
-	 */
-	public String getDescription() {
-		return description;
-	}
-	
-	/**
-	 * @return the price
-	 */
-	public double getPrice() {
-		return price;
-	}
-
-	/**
-	 * @return the location
-	 */
-	public Location getLoc() {
-		return loc.toLocation();
-	}
-
-	public boolean isActive() {
-		return active;
 	}
 }
