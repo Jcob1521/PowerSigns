@@ -38,7 +38,7 @@
 #                   # See the full documentation here: https://github.com/redslime/PowerSigns/wiki/Limits
 # ###################
 # DO NOT CHANGE THE VERSION!!
-version: 1.13.1
+version: 1.13.2
 lang: en-US
 cooldown: 5
 power-duration: 1

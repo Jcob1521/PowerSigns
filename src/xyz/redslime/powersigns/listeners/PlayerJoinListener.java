@@ -25,7 +25,6 @@ public class PlayerJoinListener implements Listener {
             for(TextComponent opMessage : opMessages) {
                 p.spigot().sendMessage(opMessage);
             }
-            opMessages.clear();
         }
     }
 }

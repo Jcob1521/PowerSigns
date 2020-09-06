@@ -1,6 +1,6 @@
 name: PowerSigns
 author: redslime
-version: 1.13.1
+version: 1.13.2
 main: xyz.redslime.powersigns.PowerSignsPlugin
 website: https://github.com/redslime/PowerSigns
 depend: [Vault]
