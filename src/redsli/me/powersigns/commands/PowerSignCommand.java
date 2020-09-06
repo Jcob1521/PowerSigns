@@ -5,7 +5,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
-
 import redsli.me.powersigns.locale.PSLocale;
 import redsli.me.powersigns.util.CenteredMessage;
 import redsli.me.powersigns.util.ezTextComponent;
@@ -45,7 +44,7 @@ public class PowerSignCommand implements CommandExecutor {
 				p.sendMessage("");
 				p.sendMessage(CenteredMessage.getCenteredMessage("§6§lPowerSigns §r§ev" + plugin.getDescription().getVersion() + " §6by §credslime"));
 				p.sendMessage(CenteredMessage.getCenteredMessage("§fLanguage: §7" + PSLocale.LOCALE_NAME.get() + " by " + PSLocale.LOCALE_TRANSLATOR.get()));
-				p.sendMessage(CenteredMessage.getCenteredMessage("§fGithub: §7https://github.com/hallopiu/PowerSigns"));
+				p.sendMessage(CenteredMessage.getCenteredMessage("§fGithub: §7https://github.com/redslime/PowerSigns"));
 				p.spigot().sendMessage(new ezTextComponent(CenteredMessage.getCenteredMessage("§b[HELP]")).withHoverMessage("§fClick to see help!").withCommandExecution("powersigns help").get());
 				p.sendMessage("");
 				p.sendMessage(CenteredMessage.getCenteredMessage("§a§m----------------------------------"));

@@ -31,7 +31,7 @@
 # #
 # ###################
 #     LIMITS        # You can limit the amount of PowerSigns a player can create. This is done with powersigns.limit.* permissions.
-#                   # See the full documentation here: https://github.com/hallopiu/PowerSigns/wiki/Limits
+#                   # See the full documentation here: https://github.com/redslime/PowerSigns/wiki/Limits
 # ###################
 # DO NOT CHANGE THE VERSION!!
 version: 1.13.1
