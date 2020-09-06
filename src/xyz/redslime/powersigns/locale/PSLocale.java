@@ -1,9 +1,9 @@
-package redsli.me.powersigns.locale;
+package xyz.redslime.powersigns.locale;
 
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.YamlConfiguration;
-import redsli.me.powersigns.PowerSignsPlugin;
-import redsli.me.powersigns.util.UTF8YamlConfiguration;
+import xyz.redslime.powersigns.PowerSignsPlugin;
+import xyz.redslime.powersigns.util.UTF8YamlConfiguration;
 
 import java.io.File;
 import java.util.logging.Logger;

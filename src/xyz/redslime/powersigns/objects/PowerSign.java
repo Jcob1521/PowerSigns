@@ -1,4 +1,4 @@
-package redsli.me.powersigns.objects;
+package xyz.redslime.powersigns.objects;
 
 import lombok.Getter;
 import org.bukkit.*;
@@ -7,10 +7,10 @@ import org.bukkit.block.BlockFace;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.block.data.type.WallSign;
 import org.bukkit.entity.Player;
-import redsli.me.powersigns.PowerSignsPlugin;
-import redsli.me.powersigns.events.PowerSignUseEvent;
-import redsli.me.powersigns.locale.PSLocale;
-import redsli.me.powersigns.util.Utils;
+import xyz.redslime.powersigns.PowerSignsPlugin;
+import xyz.redslime.powersigns.events.PowerSignUseEvent;
+import xyz.redslime.powersigns.locale.PSLocale;
+import xyz.redslime.powersigns.util.Utils;
 
 import java.util.ArrayList;
 import java.util.List;

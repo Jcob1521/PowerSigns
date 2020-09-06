@@ -1,13 +1,13 @@
-package redsli.me.powersigns.commands;
+package xyz.redslime.powersigns.commands;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
-import redsli.me.powersigns.locale.PSLocale;
-import redsli.me.powersigns.util.CenteredMessage;
-import redsli.me.powersigns.util.ezTextComponent;
+import xyz.redslime.powersigns.locale.PSLocale;
+import xyz.redslime.powersigns.util.CenteredMessage;
+import xyz.redslime.powersigns.util.ezTextComponent;
 
 /**
  * Created by redslime on 16.10.2017

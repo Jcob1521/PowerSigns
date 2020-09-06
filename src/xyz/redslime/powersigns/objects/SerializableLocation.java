@@ -1,4 +1,4 @@
-package redsli.me.powersigns.objects;
+package xyz.redslime.powersigns.objects;
 
 import lombok.Getter;
 import org.bukkit.Bukkit;

@@ -1,4 +1,4 @@
-package redsli.me.powersigns;
+package xyz.redslime.powersigns;
 
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
@@ -8,17 +8,17 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.inventivetalent.update.spiget.SpigetUpdate;
 import org.inventivetalent.update.spiget.UpdateCallback;
 import org.inventivetalent.update.spiget.comparator.VersionComparator;
-import redsli.me.powersigns.commands.PowerSignCommand;
-import redsli.me.powersigns.listeners.BlockBreakListener;
-import redsli.me.powersigns.listeners.InteractListener;
-import redsli.me.powersigns.listeners.PlayerJoinListener;
-import redsli.me.powersigns.listeners.SignChangeListener;
-import redsli.me.powersigns.locale.PSLocale;
-import redsli.me.powersigns.objects.Confirmation;
-import redsli.me.powersigns.util.Metrics;
-import redsli.me.powersigns.util.UTF8YamlConfiguration;
-import redsli.me.powersigns.util.Utils;
-import redsli.me.powersigns.util.ezTextComponent;
+import xyz.redslime.powersigns.commands.PowerSignCommand;
+import xyz.redslime.powersigns.listeners.BlockBreakListener;
+import xyz.redslime.powersigns.listeners.InteractListener;
+import xyz.redslime.powersigns.listeners.PlayerJoinListener;
+import xyz.redslime.powersigns.listeners.SignChangeListener;
+import xyz.redslime.powersigns.locale.PSLocale;
+import xyz.redslime.powersigns.objects.Confirmation;
+import xyz.redslime.powersigns.util.Metrics;
+import xyz.redslime.powersigns.util.UTF8YamlConfiguration;
+import xyz.redslime.powersigns.util.Utils;
+import xyz.redslime.powersigns.util.ezTextComponent;
 
 import java.io.File;
 import java.io.IOException;

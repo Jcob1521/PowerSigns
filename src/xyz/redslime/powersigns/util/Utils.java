@@ -1,4 +1,4 @@
-package redsli.me.powersigns.util;
+package xyz.redslime.powersigns.util;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -6,8 +6,8 @@ import com.google.gson.reflect.TypeToken;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.PermissionAttachmentInfo;
-import redsli.me.powersigns.PowerSignsPlugin;
-import redsli.me.powersigns.objects.PowerSign;
+import xyz.redslime.powersigns.PowerSignsPlugin;
+import xyz.redslime.powersigns.objects.PowerSign;
 
 import java.io.*;
 import java.util.List;

@@ -1,10 +1,10 @@
-package redsli.me.powersigns.events;
+package xyz.redslime.powersigns.events;
 
 import lombok.Getter;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
-import redsli.me.powersigns.objects.PowerSign;
+import xyz.redslime.powersigns.objects.PowerSign;
 
 /**
  * Created by redslime on 15.10.2017

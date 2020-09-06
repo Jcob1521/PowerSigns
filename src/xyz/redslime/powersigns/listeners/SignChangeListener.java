@@ -1,4 +1,4 @@
-package redsli.me.powersigns.listeners;
+package xyz.redslime.powersigns.listeners;
 
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
@@ -6,9 +6,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.SignChangeEvent;
-import redsli.me.powersigns.locale.PSLocale;
-import redsli.me.powersigns.objects.PowerSign;
-import redsli.me.powersigns.util.Utils;
+import xyz.redslime.powersigns.locale.PSLocale;
+import xyz.redslime.powersigns.objects.PowerSign;
+import xyz.redslime.powersigns.util.Utils;
 
 /**
  * Created by redslime on 15.10.2017
