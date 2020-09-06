@@ -15,6 +15,7 @@ import xyz.redslime.powersigns.util.Utils;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.logging.Logger;
 
 /**
  * Created by redslime on 15.10.2017
@@ -109,9 +110,10 @@ public class PowerSign {
      */
 	public void use(Player player) {
 		active = true;
+		OfflinePlayer recipient = Bukkit.getOfflinePlayer(owner);
 		Bukkit.getPluginManager().callEvent(new PowerSignUseEvent(player, this));
 		PowerSignsPlugin.getEconomy().withdrawPlayer(player, price);
-		PowerSignsPlugin.getEconomy().depositPlayer(Bukkit.getOfflinePlayer(owner), price);
+		PowerSignsPlugin.getEconomy().depositPlayer(recipient, price);
 		player.sendMessage(PSLocale.SIGN_USE_SUCCESS_SELF.get().replace("{price}", price + ""));
 		Player signOwner = Bukkit.getPlayer(owner);
 		if(signOwner != null) { // Player owning the sign is online
@@ -126,6 +128,7 @@ public class PowerSign {
 			getSignBlock().setBlockData(blockData);
 			active = false;
 		}, delay);
+		Logger.getLogger("Minecraft").info(String.format("[%s] %s paid %s to %s via a PowerSign ('%s')", PowerSignsPlugin.instance.getDescription().getName(), player.getName(), price, recipient.getName(), description));
 	}
 
     /**
