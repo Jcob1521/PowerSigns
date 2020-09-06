@@ -1,14 +1,15 @@
 package redsli.me.powersigns.events;
 
+import lombok.Getter;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
-
 import redsli.me.powersigns.objects.PowerSign;
 
 /**
  * Created by redslime on 15.10.2017
  */
+@Getter
 public class PowerSignUseEvent extends Event {
 	
 	private static final HandlerList handlers = new HandlerList();
@@ -32,16 +33,10 @@ public class PowerSignUseEvent extends Event {
 		return handlers;
 	}
 
-    /**
-     * @return The player clicking the sign
-     */
-	public Player getPlayer() {
-		return player;
-	}
-
-    /**
-     * @return The PowerSign clicked on
-     */
+	/**
+	 * @return The PowerSign clicked on
+	 */
+	@Deprecated
 	public PowerSign getPowerSign() {
 		return sign;
 	}

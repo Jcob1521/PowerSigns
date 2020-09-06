@@ -1,5 +1,6 @@
 package redsli.me.powersigns.objects;
 
+import lombok.Getter;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
@@ -18,6 +19,7 @@ import java.util.UUID;
 /**
  * Created by redslime on 15.10.2017
  */
+@Getter
 public class PowerSign {
 
 	public static List<PowerSign> powerSigns = new ArrayList<>();
@@ -142,37 +144,5 @@ public class PowerSign {
 			}
 		}
 		return null;
-	}
-	
-	/**
-	 * @return the owner
-	 */
-	public UUID getOwner() {
-		return owner;
-	}
-	
-	/**
-	 * @return the description
-	 */
-	public String getDescription() {
-		return description;
-	}
-	
-	/**
-	 * @return the price
-	 */
-	public double getPrice() {
-		return price;
-	}
-
-	/**
-	 * @return the location
-	 */
-	public Location getLoc() {
-		return loc.toLocation();
-	}
-
-	public boolean isActive() {
-		return active;
 	}
 }
