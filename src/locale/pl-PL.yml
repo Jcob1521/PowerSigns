@@ -1,0 +1,46 @@
+###########################################################################################
+# This is a YML file. Be careful when editing. Check your edits in a YAML checker like    #
+# the one at http://yaml-online-parser.appspot.com                                        #
+###########################################################################################
+
+# pl-PL
+# you may use '&' and '§' for color codes
+# you can access variables with '{$var_name}'
+
+locale.translator: "Jcob1521"
+locale.name: "pl-PL"
+format.prefix: "&9[&b&lPower&r&3Signs&9]"
+format.success: "&a>&7"
+format.error: "&c>&7"
+format.info: "  &b*&7"
+plugin.update: "&9PowerSigns: Nowa Wersja &b{version} &9Jest Dostepna! &7&o(Click to download)"
+sign.description: "Description"
+sign.price: "Price"
+sign.error.long: "{$format.error} Wystapil blad! Prosze ponownie utworzyc PowerSign"
+sign.error.short: "&4Error"
+sign.use:
+  denied: "{$format.error} Nie masz permisji do uzycia tej PowerSign!"
+  success:
+    self: "{$format.success} Aktywowales PowerSign za &e${price}"
+    owner: "{$format.prefix} &e{player} &7uzyl twoja PowerSign &3{desc} &7za &e${price}"
+  error:
+    nomoney: "{$format.error} Nie masz wystarczajaco kasy!"
+    cooldown: "{$format.error} Prosze, poczekaj chwile przed uzyciem znowu tej PaySign!"
+    worlddisabled: "{$sign.create.error.worlddisabled}"
+  confirm:
+    help: "&4Potwierdz Platnosc Na &c${value} &4Za &c{description}"
+    title: "&4Potrzeba Potwierdzenia"
+    continue: "&aTAK"
+    cancel: "&cNIE"
+sign.create:
+  denied:
+    self: "{$format.error} Nie masz permisji do stworzenia PowerSign"
+    other: "{$format.error} Możesz Stworzyć PowerSign TYLKO Z Twoim Nickiem"
+  error:
+    playernotfound: "{$format.error} Nieznaleziono gracza o nicku &b{player}"
+    invalidnumber: "{$format.error} &b{number} &7Nie jest Numerem!"
+    worlddisabled: "{$format.error} PowerSign Sa Wylaczone W Tym Swiecie!"
+    limitreached: "{$format.error} Osiagnales Limit PowerSign'ow, Ktore Mozesz Stworzyc!"
+    nodecimalprice: "{$format.error} Ceny w liczbach dziesietnych sa niedozwolone"
+  success: "{$format.success} Gratulacje! Stworzyles Nowy PowerSign"
+  help: "{$format.info} &fPrawidlowy PowerSign wyglada następujaco:"
